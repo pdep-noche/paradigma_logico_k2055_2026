@@ -42,3 +42,23 @@ cumpleCondicion(Persona):- trabajoEn(Persona, omni).
 
 
 
+genero(titanic,drama).
+genero(gilbertGrape,drama).
+genero(atrapameSiPuedes,comedia).
+genero(ironMan,accion).
+genero(rapidoYFurioso,accion).
+genero(elProfesional,drama).
+
+gusta(belen,titanic).
+gusta(belen,gilbertGrape).
+gusta(belen,elProfesional).
+gusta(juan, ironMan).
+gusta(pedro, atrapameSiPuedes).
+gusta(pedro, rapidoYFurioso).
+
+
+soloLeGustaPeliculaDeGenero(Persona, Genero):-persona(Persona), generoPelicula(Genero), 
+    forall(gusta(Persona, Pelicula), genero(Pelicula, Genero)).
+
+persona(Persona):-gusta(Persona, _).
+generoPelicula(Genero):- genero(_, Genero).
